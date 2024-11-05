@@ -17,4 +17,7 @@ export default styled.div<LandingProps>`
   width: 100vw; /* Make it responsive to the viewport width */
   height: 60vh;
   padding: 2rem;
+  @media (max-width: 900px) {
+    padding: 0;
+  }
 `;
