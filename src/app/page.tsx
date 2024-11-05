@@ -17,10 +17,10 @@ const randomUrl = randomImg.src;
 
 export default function Home() {
   const childrenData = [
-    { text: "First Item", backgroundImage: cookingUrl },
-    { text: "Second Item", backgroundImage: musicUrl },
-    { text: "Third Item", backgroundImage: sleepUrl },
-    { text: "fourth Item", backgroundImage: randomUrl },
+    { text: "Cooking", backgroundImage: cookingUrl },
+    { text: "Music", backgroundImage: musicUrl },
+    { text: "Stories", backgroundImage: sleepUrl },
+    { text: "Random", backgroundImage: randomUrl },
   ];
 
   return (
