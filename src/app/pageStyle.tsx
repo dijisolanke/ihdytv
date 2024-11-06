@@ -22,18 +22,3 @@ export const LandingWrapper = styled.div<LandingProps>`
     padding: 0;
   }
 `;
-
-export const OverlayStyle = styled.div`
-  position: "fixed";
-  top: 0;
-  left: 0;
-  width: "100%";
-  height: "100%";
-  background-color: "white";
-  display: "flex";
-  justify-content: "center";
-  align-items: "center";
-  font-size: "2rem";
-  color: "black";
-  z-index: 9999;
-`;
