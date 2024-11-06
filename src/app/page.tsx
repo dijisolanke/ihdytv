@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { LandingWrapper, OverlayStyle, LoadingCircle } from "./pageStyle";
+import { LandingWrapper } from "./pageStyle";
 import LandingCard from "@/Components/LandingCard";
 import LoadingScreen from "@/Components/LoadingScreen";
 
