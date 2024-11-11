@@ -2,6 +2,7 @@
 
 // ParentComponent.tsx
 import React from "react";
+import Link from "next/link";
 
 import {
   ParentContainer,
@@ -13,6 +14,7 @@ import {
 interface ChildProps {
   text: string;
   backgroundImage: string;
+  url: string;
 }
 
 interface ParentComponentProps {
@@ -24,7 +26,7 @@ interface ParentComponentProps {
 const Child: React.FC<ChildProps> = ({ text, backgroundImage, url }) => (
   <Link href={url} passHref>
     <ChildContainer>
-      <ImageSquare $backgroundimage={backgroundImage} />
+      <ImageSquare backgroundImage={backgroundImage} />
       <TextSpan>{text}</TextSpan>
     </ChildContainer>
   </Link>
@@ -37,6 +39,7 @@ const ParentComponent: React.FC<ParentComponentProps> = ({ childrenData }) => (
         key={index}
         text={child.text}
         backgroundImage={child.backgroundImage}
+        url={child.url}
       />
     ))}
   </ParentContainer>
