@@ -31,7 +31,7 @@ const LoadingScreen = ({ progress }: LoadingOverlayProps) => {
   return (
     <OverlayStyle>
       <div style={{ position: "relative" }}>
-        <LoadingCircle $progress={progress} />
+        <LoadingCircle progress={progress} />
         <LoadingText style={{ opacity: fadeIn ? 1 : 0 }}>IHDY</LoadingText>
       </div>
     </OverlayStyle>

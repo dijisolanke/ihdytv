@@ -1,6 +1,8 @@
 "use client";
-import Root from "./pageStyle";
+import React, { useState, useEffect } from "react";
+import { LandingWrapper } from "./pageStyle";
 import LandingCard from "@/Components/LandingCard";
+import LoadingScreen from "@/Components/LoadingScreen";
 
 import cooking from "@/../public/Cooking.png";
 import music from "@/../public/Music.png";
@@ -19,6 +21,7 @@ const randomUrl = randomImg.src;
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [progress, setProgress] = useState(0);
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -39,14 +42,17 @@ export default function Home() {
       backgroundImage: cookingUrl,
       url: "./channels/cooking",
     },
+
     { text: "Music", backgroundImage: musicUrl, url: "./channels/music" },
     { text: "Stories", backgroundImage: sleepUrl, url: "./channels/stories" },
     { text: "Random", backgroundImage: randomUrl, url: "./channels/random" },
   ];
 
-  return (
-    <Root image={backgroundImg}>
+  return isLoaded ? (
+    <LandingWrapper image={backgroundImg}>
       <LandingCard childrenData={childrenData} />
-    </Root>
+    </LandingWrapper>
+  ) : (
+    <LoadingScreen progress={progress} />
   );
 }

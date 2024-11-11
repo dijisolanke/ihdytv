@@ -4,7 +4,8 @@ interface LandingProps {
   image: string;
 }
 
-export default styled.div<LandingProps>`
+// Wrapper for the main landing page content
+export const LandingWrapper = styled.div<LandingProps>`
   margin-top: 13vh;
   display: flex;
   justify-content: center;

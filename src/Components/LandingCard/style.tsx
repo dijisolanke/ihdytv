@@ -10,18 +10,21 @@ const ParentContainer = styled.div`
   gap: 20px;
   overflow: hidden;
   max-width: 852px;
+  a {
+    text-decoration: none;
+  }
 `;
 
 // Styled Square for Background Image
-const ImageSquare = styled.div<{ backgroundImage: string }>`
+const ImageSquare = styled.div<{ $backgroundimage: string }>`
   width: 11vw;
   height: 17vh;
-  background-image: url(${(props) => props.backgroundImage});
+  background-image: url(${(props) => props.$backgroundimage});
   background-size: cover;
   background-position: center;
   border: solid black 1px;
   border-radius: 8px;
-  transition: border-width 0.15s ease-in-out;
+  transition: border-width 0.1s ease-in-out;
 
   @media (max-width: 1298px) {
     width: 14vw;
@@ -50,7 +53,7 @@ const ImageSquare = styled.div<{ backgroundImage: string }>`
     height: 15vh;
   }
   &:hover {
-    border-width: 3px;
+    border-width: 6px;
     cursor: pointer;
   }
 `;

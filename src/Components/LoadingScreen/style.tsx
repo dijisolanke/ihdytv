@@ -27,15 +27,15 @@ export const OverlayStyle = styled.div`
 `;
 
 // Loading circle with dynamic background based on progress
-export const LoadingCircle = styled.div<{ $progress: number }>`
+export const LoadingCircle = styled.div<{ progress: number }>`
   position: absolute;
   top: 43.6vh;
   right: 46.2%;
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background: ${({ $progress }) =>
-    `conic-gradient(#9c9999 ${$progress}%, #ddd ${$progress}%)`};
+  background: ${({ progress }) =>
+    `conic-gradient(#9c9999 ${progress}%, #ddd ${progress}%)`};
   transition: background 0.1s ease;
 `;
 
