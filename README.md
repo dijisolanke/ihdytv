@@ -1,4 +1,4 @@
-#This is an artist's website for video and music content
+# This is a web repository for my artistic creations
 
 
 
@@ -6,7 +6,11 @@
 https://github.com/user-attachments/assets/c9bcd831-4300-4d62-9bd4-c92a4c2509a1
 
 
-
+## Tech stack
+- React / Nextjs
+- Sanity SEO for video and image storage
+- Groq for querying the Data
+- Jest for unit testing components
 
 
 
