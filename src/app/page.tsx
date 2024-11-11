@@ -9,6 +9,7 @@ import music from "@/../public/Music.png";
 import sleep from "@/../public/Sleep.png";
 import randomImg from "@/../public/Random.png";
 import image from "../../public/tvWallPaper.png";
+import { useEffect, useState } from "react";
 
 const backgroundImg = image.src;
 
@@ -20,7 +21,7 @@ const randomUrl = randomImg.src;
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [fadeIn, setFadeIn] = useState(false);
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -41,9 +42,10 @@ export default function Home() {
       backgroundImage: cookingUrl,
       url: "./channels/cooking",
     },
-    { text: "Music", backgroundImage: musicUrl, url: "www.google.com" },
-    { text: "Stories", backgroundImage: sleepUrl, url: "www.google.com" },
-    { text: "Random", backgroundImage: randomUrl, url: "www.google.com" },
+
+    { text: "Music", backgroundImage: musicUrl, url: "./channels/music" },
+    { text: "Stories", backgroundImage: sleepUrl, url: "./channels/stories" },
+    { text: "Random", backgroundImage: randomUrl, url: "./channels/random" },
   ];
 
   return isLoaded ? (
