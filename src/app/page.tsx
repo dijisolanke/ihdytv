@@ -9,7 +9,6 @@ import music from "@/../public/Music.png";
 import sleep from "@/../public/Sleep.png";
 import randomImg from "@/../public/Random.png";
 import image from "../../public/tvWallPaper.png";
-import { useEffect, useState } from "react";
 
 const backgroundImg = image.src;
 
@@ -21,7 +20,6 @@ const randomUrl = randomImg.src;
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [progress, setProgress] = useState(0);
-
 
   useEffect(() => {
     const interval = setInterval(() => {

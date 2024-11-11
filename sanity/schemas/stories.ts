@@ -20,7 +20,7 @@ const stories = {
             title: 'Audio',
             type: 'file',
             options: {
-              accept: 'audio/*'
+              accept: 'audio/*', // Only allow video files
             }
           },
     ]

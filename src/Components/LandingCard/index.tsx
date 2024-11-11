@@ -26,7 +26,7 @@ interface ParentComponentProps {
 const Child: React.FC<ChildProps> = ({ text, backgroundImage, url }) => (
   <Link href={url} passHref>
     <ChildContainer>
-      <ImageSquare backgroundImage={backgroundImage} />
+      <ImageSquare $backgroundimage={backgroundImage} />
       <TextSpan>{text}</TextSpan>
     </ChildContainer>
   </Link>

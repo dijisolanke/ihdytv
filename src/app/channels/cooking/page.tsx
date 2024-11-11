@@ -1,20 +1,25 @@
-
 "use client";
-
+import { getCooking as getCookingData } from "../../../../sanity/sanity.utils";
 import React, { useState, useEffect } from "react";
 import { Root } from "./styles";
 import VideoGallery from "@/Components/VideoGallery";
 import LoadingScreen from "@/Components/LoadingScreen";
+import { Cooking } from "../types";
 
-const vidz: string[] = [
-  "/muta.mp4",
-  "../../../../../READY/8minsOfFlow.mp4",
-  "../../../../../READY/muta.mp4",
-  "../../../../../READY/mutaHard.mp4",
-  "../../../../../READY/mutaHard.mp4",
-];
+export default function Cooking() {
+  // const [music, setMusic] = useState(null);
+  const [cookingData, setCookingData] = useState<Cooking[]>([]);
 
-export default function page2() {
+  //fetch the music videos
+  useEffect(() => {
+    async function fetchCooking() {
+      const cookingData = await getCookingData();
+      setCookingData(cookingData);
+      console.log("fjaymoney", cookingData);
+    }
+    fetchCooking();
+  }, []);
+
   const [isLoaded, setIsLoaded] = useState(false);
   const [progress, setProgress] = useState(0);
 
@@ -30,10 +35,15 @@ export default function page2() {
 
     return () => clearInterval(interval);
   }, [progress]);
+
   return isLoaded ? (
     <Root>
       <h1> Cooking </h1>
-      <VideoGallery videos={vidz} />
+      <VideoGallery
+        videos={cookingData.map((item) => item.videoFile.asset.url)}
+        thumbnailImages={cookingData.map((item) => item.coverImage.asset.url)} // Array of thumbnail URLs
+        titles={cookingData.map((item) => item.title)}
+      />
     </Root>
   ) : (
     <LoadingScreen progress={progress} />
