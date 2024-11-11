@@ -21,11 +21,13 @@ interface ParentComponentProps {
 
 // Styled Parent Container
 
-const Child: React.FC<ChildProps> = ({ text, backgroundImage }) => (
-  <ChildContainer>
-    <ImageSquare backgroundImage={backgroundImage} />
-    <TextSpan>{text}</TextSpan>
-  </ChildContainer>
+const Child: React.FC<ChildProps> = ({ text, backgroundImage, url }) => (
+  <Link href={url} passHref>
+    <ChildContainer>
+      <ImageSquare $backgroundimage={backgroundImage} />
+      <TextSpan>{text}</TextSpan>
+    </ChildContainer>
+  </Link>
 );
 
 const ParentComponent: React.FC<ParentComponentProps> = ({ childrenData }) => (
