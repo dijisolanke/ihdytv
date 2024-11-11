@@ -16,10 +16,10 @@ const ParentContainer = styled.div`
 `;
 
 // Styled Square for Background Image
-const ImageSquare = styled.div<{ backgroundImage: string }>`
+const ImageSquare = styled.div<{ $backgroundimage: string }>`
   width: 11vw;
   height: 17vh;
-  background-image: url(${(props) => props.backgroundImage});
+  background-image: url(${(props) => props.$backgroundimage});
   background-size: cover;
   background-position: center;
   border: solid black 1px;
