@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { VideoGalleryProps, OverlayProps } from "./types";
 import {
   GalleryContainer,
   VideoItem,
@@ -6,18 +7,6 @@ import {
   VideoItemWrapper,
   VideoTitle,
 } from "./style";
-
-interface VideoGalleryProps {
-  videos: string[];
-  thumbnailImages: string[];
-  titles: string[];
-}
-
-interface OverlayProps {
-  videoUrl: string;
-  thumbnail: string;
-  title: string;
-}
 
 function VideoWithOverlay({ videoUrl, thumbnail, title }: OverlayProps) {
   const [isOverlayVisible, setOverlayVisible] = useState(true); // Overlay visible by default
@@ -66,7 +55,7 @@ function VideoWithOverlay({ videoUrl, thumbnail, title }: OverlayProps) {
           style={{ backgroundImage: `url(${thumbnail})` }}
           isVisible={isOverlayVisible}
         />
-        <video ref={videoRef} controls>
+        <video ref={videoRef} controls data-testid="video-element">
           <source src={videoUrl} type="video/mp4" />
           Your browser does not support the video tag.
         </video>

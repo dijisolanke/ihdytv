@@ -1,4 +1,4 @@
-export interface Music {
+export interface MusicType {
     title: string;
     coverImage: {
       asset: {
@@ -14,7 +14,7 @@ export interface Music {
     };
 }
 
-export interface Cooking {
+export interface CookingType {
     title: string;
     coverImage: {
       asset: {

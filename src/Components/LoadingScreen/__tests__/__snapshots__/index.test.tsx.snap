@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadingScreen matches the snapshot for consistent UI 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="overlay-style"
+  >
+    <div
+      style="position: relative;"
+    >
+      <div
+        data-progress="90"
+        data-testid="loading-circle"
+      />
+      <div
+        data-testid="loading-text"
+        style="opacity: 1;"
+      >
+        IHDY
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

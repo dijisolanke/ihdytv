@@ -3,7 +3,7 @@
 // ParentComponent.tsx
 import React from "react";
 import Link from "next/link";
-
+import { ChildProps, ParentComponentProps } from "./types";
 import {
   ParentContainer,
   ChildContainer,
@@ -11,29 +11,22 @@ import {
   TextSpan,
 } from "./style";
 
-interface ChildProps {
-  text: string;
-  backgroundImage: string;
-  url: string;
-}
-
-interface ParentComponentProps {
-  childrenData: ChildProps[];
-}
-
 // Styled Parent Container
 
 const Child: React.FC<ChildProps> = ({ text, backgroundImage, url }) => (
   <Link href={url} passHref>
-    <ChildContainer>
-      <ImageSquare $backgroundimage={backgroundImage} />
+    <ChildContainer data-testid="child-container">
+      <ImageSquare
+        data-testid="image-square"
+        $backgroundimage={backgroundImage}
+      />
       <TextSpan>{text}</TextSpan>
     </ChildContainer>
   </Link>
 );
 
 const ParentComponent: React.FC<ParentComponentProps> = ({ childrenData }) => (
-  <ParentContainer>
+  <ParentContainer data-testid="parent-container">
     {childrenData.map((child, index) => (
       <Child
         key={index}

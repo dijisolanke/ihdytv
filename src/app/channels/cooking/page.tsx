@@ -4,11 +4,11 @@ import React, { useState, useEffect } from "react";
 import { Root } from "./styles";
 import VideoGallery from "@/Components/VideoGallery";
 import LoadingScreen from "@/Components/LoadingScreen";
-import { Cooking } from "../types";
+import { CookingType } from "../types";
 
 export default function Cooking() {
   // const [music, setMusic] = useState(null);
-  const [cookingData, setCookingData] = useState<Cooking[]>([]);
+  const [cookingData, setCookingData] = useState<CookingType[]>([]);
 
   //fetch the music videos
   useEffect(() => {

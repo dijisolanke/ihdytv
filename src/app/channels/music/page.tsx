@@ -4,15 +4,15 @@ import React, { useState, useEffect } from "react";
 import { Root } from "./styles";
 import VideoGallery from "@/Components/VideoGallery";
 import LoadingScreen from "@/Components/LoadingScreen";
-import { Music } from "../types";
+import { MusicType } from "../types";
 
 export default function Music() {
-  const [musicData, setMusicData] = useState<Music[]>([]);
+  const [musicData, setMusicData] = useState<MusicType[]>([]);
 
   //fetch the music videos
   useEffect(() => {
     async function fetchMusic() {
-      const musicData: Music[] = await getMusic();
+      const musicData: MusicType[] = await getMusic();
       setMusicData(musicData || []);
     }
     fetchMusic();
