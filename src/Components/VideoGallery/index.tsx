@@ -9,7 +9,7 @@ import {
 
 interface VideoGalleryProps {
   videos: string[];
-  thumbnailImages: string[];
+  thumbnailImages: string[]; // Optional property
   titles: string[];
 }
 
@@ -21,7 +21,6 @@ interface OverlayProps {
 
 function VideoWithOverlay({ videoUrl, thumbnail, title }: OverlayProps) {
   const [isOverlayVisible, setOverlayVisible] = useState(true); // Overlay visible by default
-  const [isPaused, setPaused] = useState(true); // Video is initially paused
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   // Set up the interval to check every 5 seconds if the video is paused
@@ -36,35 +35,12 @@ function VideoWithOverlay({ videoUrl, thumbnail, title }: OverlayProps) {
     return () => clearInterval(interval);
   }, []);
 
-  const handleMouseEnter = () => {
-    setOverlayVisible(false); // Hide overlay when mouse enters the video frame
-  };
-
-  const handleMouseLeave = () => {
-    if (videoRef.current && videoRef.current.paused) {
-      setOverlayVisible(true); // Show overlay when mouse leaves and video is paused
-    }
-  };
-
-  const handleVideoClick = () => {
-    if (videoRef.current && videoRef.current.paused) {
-      // If the video is paused, hide the overlay and play the video
-      setOverlayVisible(false);
-      videoRef.current.play();
-      setPaused(false); // Mark video as playing
-    }
-  };
-
   return (
     <VideoItemWrapper>
-      <VideoItem
-        onMouseEnter={handleMouseEnter} // Hide overlay on mouse enter
-        onMouseLeave={handleMouseLeave} // Show overlay if video is paused on mouse leave
-        onClick={handleVideoClick} // Play video and hide overlay on click
-      >
+      <VideoItem>
         <Overlay
           style={{ backgroundImage: `url(${thumbnail})` }}
-          isVisible={isOverlayVisible}
+          isVisible={!isOverlayVisible}
         />
         <video ref={videoRef} controls>
           <source src={videoUrl} type="video/mp4" />
@@ -78,7 +54,7 @@ function VideoWithOverlay({ videoUrl, thumbnail, title }: OverlayProps) {
 
 export default function VideoGallery({
   videos,
-  thumbnailImages,
+  thumbnailImages = [], // Default to an empty array
   titles = [],
 }: VideoGalleryProps) {
   return (
