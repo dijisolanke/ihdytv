@@ -38,6 +38,7 @@ const VideoItem = styled.div`
     height: 100%;
     border-radius: 8px;
     object-fit: cover;
+    /* object-fit: cover; */
   }
 `;
 
