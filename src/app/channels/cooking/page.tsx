@@ -4,18 +4,16 @@ import React, { useState, useEffect } from "react";
 import { Root } from "./styles";
 import VideoGallery from "@/Components/VideoGallery";
 import LoadingScreen from "@/Components/LoadingScreen";
-import { Cooking } from "../types";
+import { CookingType } from "../types";
 
 export default function Cooking() {
-  // const [music, setMusic] = useState(null);
-  const [cookingData, setCookingData] = useState<Cooking[]>([]);
+  const [cookingData, setCookingData] = useState<CookingType[]>([]);
 
   //fetch the music videos
   useEffect(() => {
     async function fetchCooking() {
       const cookingData = await getCookingData();
       setCookingData(cookingData);
-      console.log("fjaymoney", cookingData);
     }
     fetchCooking();
   }, []);
@@ -24,17 +22,32 @@ export default function Cooking() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((prev) => Math.min(prev + 5, 100)); // Increase progress by 5% each time
-    }, 100); // Update every 100ms
+    const checkReadyState = () => {
+      switch (document.readyState) {
+        case "loading":
+          setProgress(25);
+          break;
+        case "interactive":
+          setProgress(75);
+          break;
+        case "complete":
+          setProgress(100);
+          setIsLoaded(true);
+          break;
+      }
+    };
 
-    if (progress === 100) {
-      setIsLoaded(true);
-      clearInterval(interval);
-    }
+    // Initial check
+    checkReadyState();
 
-    return () => clearInterval(interval);
-  }, [progress]);
+    // Add event listener for readystatechange
+    document.addEventListener("readystatechange", checkReadyState);
+
+    // Cleanup
+    return () => {
+      document.removeEventListener("readystatechange", checkReadyState);
+    };
+  }, []);
 
   return isLoaded ? (
     <Root>
@@ -43,6 +56,7 @@ export default function Cooking() {
         videos={cookingData.map((item) => item.videoFile.asset.url)}
         thumbnailImages={cookingData.map((item) => item.coverImage.asset.url)} // Array of thumbnail URLs
         titles={cookingData.map((item) => item.title)}
+        column
       />
     </Root>
   ) : (
