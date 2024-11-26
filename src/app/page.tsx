@@ -4,17 +4,17 @@ import { LandingWrapper } from "./pageStyle";
 import LandingCard from "@/Components/LandingCard";
 import LoadingScreen from "@/Components/LoadingScreen";
 
-import cooking from "@/../public/Cooking.png";
-import music from "@/../public/Music.png";
-import sleep from "@/../public/Sleep.png";
+import cookingImg from "@/../public/Cooking.png";
+import musicImg from "@/../public/Music.png";
+import sleepImg from "@/../public/Sleep.png";
 import randomImg from "@/../public/Random.png";
-import image from "../../public/tvWallPaper.png";
+import tvImage from "../../public/tvWallPaper.png";
 
-const backgroundImg = image.src;
+const backgroundImg = tvImage.src;
 
-const cookingUrl = cooking.src;
-const musicUrl = music.src;
-const sleepUrl = sleep.src;
+const cookingUrl = cookingImg.src;
+const musicUrl = musicImg.src;
+const sleepUrl = sleepImg.src;
 const randomUrl = randomImg.src;
 
 export default function Home() {
@@ -22,17 +22,32 @@ export default function Home() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((prev) => Math.min(prev + 5, 100)); // Increase progress by 5% each time
-    }, 100); // Update every 100ms
+    const checkReadyState = () => {
+      switch (document.readyState) {
+        case "loading":
+          setProgress(25);
+          break;
+        case "interactive":
+          setProgress(75);
+          break;
+        case "complete":
+          setProgress(100);
+          setIsLoaded(true);
+          break;
+      }
+    };
 
-    if (progress === 100) {
-      setIsLoaded(true);
-      clearInterval(interval);
-    }
+    // Initial check
+    checkReadyState();
 
-    return () => clearInterval(interval);
-  }, [progress]);
+    // Add event listener for readystatechange
+    document.addEventListener("readystatechange", checkReadyState);
+
+    // Cleanup
+    return () => {
+      document.removeEventListener("readystatechange", checkReadyState);
+    };
+  }, []);
 
   const childrenData = [
     {

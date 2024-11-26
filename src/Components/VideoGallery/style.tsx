@@ -4,6 +4,11 @@ import styled from "styled-components";
 interface OverlayProps {
   isVisible: boolean;
 }
+
+interface GalleryProps {
+  isColumn?: boolean;
+}
+
 const VideoItemWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -12,12 +17,14 @@ const VideoItemWrapper = styled.div`
   max-width: calc(33.33% - 16px);
 `;
 // Styled component for the gallery container with Flexbox
-const GalleryContainer = styled.div`
+const GalleryContainer = styled.div<GalleryProps>`
   display: flex;
+  flex-direction: ${(props) => props.isColumn && "column"};
   flex-wrap: wrap;
   gap: 22px; // Adds some space between video items
   justify-content: center; // Centers items horizontally
   padding: 21px;
+  align-items: ${(props) => (props.isColumn ? "center" : "unset")};
 `;
 
 // Styled component for each video item

@@ -11,6 +11,7 @@ interface VideoGalleryProps {
   videos: string[];
   thumbnailImages: string[]; // Optional property
   titles: string[];
+  column?: boolean;
 }
 
 interface OverlayProps {
@@ -56,9 +57,10 @@ export default function VideoGallery({
   videos,
   thumbnailImages = [], // Default to an empty array
   titles = [],
+  column,
 }: VideoGalleryProps) {
   return (
-    <GalleryContainer>
+    <GalleryContainer isColumn={column}>
       {videos.map((videoUrl, index) => (
         <VideoWithOverlay
           key={index}
