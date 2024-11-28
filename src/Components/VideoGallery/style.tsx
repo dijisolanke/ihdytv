@@ -50,7 +50,6 @@ const VideoItem = styled.div`
 
     @media (max-width: 900px) {
       width: 60vw;
-      height: 100vh;
     }
   }
 `;
