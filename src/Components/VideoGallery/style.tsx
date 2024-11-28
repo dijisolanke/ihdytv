@@ -15,6 +15,10 @@ const VideoItemWrapper = styled.div`
   align-items: center;
   flex: 1 1 calc(33.33% - 16px);
   max-width: calc(33.33% - 16px);
+
+  @media (max-width: 900px) {
+    max-width: 80%;
+  }
 `;
 // Styled component for the gallery container with Flexbox
 const GalleryContainer = styled.div<GalleryProps>`
@@ -33,12 +37,21 @@ const VideoItem = styled.div`
   width: 100%;
   aspect-ratio: 9 / 16;
 
+  @media (max-width: 900px) {
+    aspect-ratio: 9 / 11;
+  }
+
   video {
     width: 100%;
     height: 100%;
     border-radius: 8px;
     object-fit: cover;
     /* object-fit: cover; */
+
+    @media (max-width: 900px) {
+      width: 60vw;
+      height: 100vh;
+    }
   }
 `;
 
